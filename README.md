@@ -22,12 +22,11 @@ Each corner is split into parallax layers: `Sky`, `BayBridge`, `Skyline`, `Build
 ## Layout
 
 ```
-SamAltmanRun.uproject        Unreal project (Paper2D + Python plugins)
-Config/                      Project settings
+ramaltmanrun/                Unreal 5.8 project (ramaltmanrun.uproject, Config, Content)
+ramaltmanrun/Content/Python/ Editor script that builds the level in Unreal
 Art/Source/City/             Generated source PNGs (imported by the editor script)
 Art/Preview/                 Composited previews of each corner
 Tools/CityGen/               Python generator that draws the city art
-Content/Python/              Editor script that builds the level in Unreal
 ```
 
 ## Regenerate the art
@@ -39,8 +38,8 @@ python3 Tools/CityGen/generate_sf_city.py
 
 ## Build the level in Unreal
 
-1. Open `SamAltmanRun.uproject` (UE 5.8).
-2. **Tools > Execute Python Script...** and pick `Content/Python/build_sf_city.py`.
+1. Open `ramaltmanrun/ramaltmanrun.uproject` (UE 5.8).
+2. **Tools > Execute Python Script...** and pick `ramaltmanrun/Content/Python/build_sf_city.py`.
 3. This creates `/Game/Maps/L_SF_CaliforniaStreet` with every layer placed, an orthographic
    side camera, a PlayerStart, and an invisible floor on the sidewalk (Z = 150).
 
@@ -48,7 +47,7 @@ python3 Tools/CityGen/generate_sf_city.py
 
 The project enables the `ModelContextProtocol` and `AllToolsets` plugins, and `.mcp.json` points
 Claude Code at `http://127.0.0.1:8000/mcp`. Turn on auto-start once per machine by creating
-`Saved/Config/MacEditor/EditorPerProjectUserSettings.ini` with:
+`ramaltmanrun/Saved/Config/MacEditor/EditorPerProjectUserSettings.ini` with:
 
 ```ini
 [/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]
