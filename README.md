@@ -39,7 +39,20 @@ python3 Tools/CityGen/generate_sf_city.py
 
 ## Build the level in Unreal
 
-1. Open `SamAltmanRun.uproject` (UE 5.6; other 5.x versions will offer to convert).
+1. Open `SamAltmanRun.uproject` (UE 5.8).
 2. **Tools > Execute Python Script...** and pick `Content/Python/build_sf_city.py`.
 3. This creates `/Game/Maps/L_SF_CaliforniaStreet` with every layer placed, an orthographic
    side camera, a PlayerStart, and an invisible floor on the sidewalk (Z = 150).
+
+## Unreal MCP (let Claude drive the editor)
+
+The project enables the `ModelContextProtocol` and `AllToolsets` plugins, and `.mcp.json` points
+Claude Code at `http://127.0.0.1:8000/mcp`. Turn on auto-start once per machine by creating
+`Saved/Config/MacEditor/EditorPerProjectUserSettings.ini` with:
+
+```ini
+[/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]
+bAutoStartServer=True
+```
+
+Or run `ModelContextProtocol.StartServer` in the editor console.
